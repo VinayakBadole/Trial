@@ -1,0 +1,35 @@
+for debugging
+
+python -m pdb filename.py
+
+
+for profiling
+
+#module for profiling
+import cProfile
+
+#module for reading profiled data
+import pstats
+from pstats import SortKey
+
+#module function for profiling
+cProfile.run("start()","output.dat")
+
+#creating the output file that contains the profiled data
+with open("output_time.txt","w") as f:
+    p=pstats.Stats("output.dat",stream=f)
+    p.sort_stats("time").print_stats()
+
+
+In c
+
+debugging 
+gcc -g file.c
+gdb a.out
+
+
+profiling 
+gcc -pg file.c 
+./a.out
+gprof a.out gmon.out>file.txt
+gedit file.txt
